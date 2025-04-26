@@ -1,0 +1,53 @@
+/* Basic reset and font */
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f9fc;
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the game container */
+.container {
+  max-width: 600px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Word display styling */
+#word-display {
+  font-size: 2rem;
+  margin: 20px 0;
+  color: #333;
+}
+
+/* Input styling */
+#word-input {
+  padding: 10px;
+  font-size: 1.2rem;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+/* Stats styling */
+.stats p {
+  font-size: 1rem;
+  margin: 10px;
+}
+
+/* Restart button */
+#restart-btn {
+  background: #007bff;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#restart-btn:hover {
+  background: #0056b3;
+}

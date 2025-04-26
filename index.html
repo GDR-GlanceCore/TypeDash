@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TypeDash</title>
-  <link rel="stylesheett" href="Style.css" />
+  <link rel="stylesheet" href="static/style.css" />
 </head>
 <body>
-  <div>
+  <div class="container">
+    <h1>TypeDash</h1>
+    
+    <!-- Display the word to type -->
+    <div id="word-display"></div>
 
+    <!-- Input where the user types -->
+    <input type="text" id="word-input" placeholder="Start typing..." autofocus />
+
+    <!-- Stats section -->
+    <div class="stats">
+      <p>Time Left: <span id="time">60</span>s</p>
+      <p>Score: <span id="score">0</span></p>
+      <p>Accuracy: <span id="accuracy">100</span>%</p>
+      <p>WPM: <span id="wpm">0</span></p>
+    </div>
+
+    <!-- Restart button -->
+    <button id="restart-btn">Restart</button>
   </div>
+
+  <script src="static/script.js"></script>
 </body>
 </html>
