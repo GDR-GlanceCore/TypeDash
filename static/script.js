@@ -33,7 +33,7 @@ const wordList = [
 function startGame() {
   startMessage.style.display = 'none'; // Hide start text
   health = 100;
-  gameSpeed = 1;
+  gameSpeed = 0.1;
   updateHealth();
   words = [];
   bullets = [];
@@ -79,7 +79,7 @@ function spawnWord() {
 
 // === SPAWN SHIELD PICKUP ===
 function spawnShield() {
-  const x = Math.random() * (window.innerWidth - 100);
+  const x = (window.innerWidth / 2) - 20; // Center of screen minus half the width of the shield (40px / 2)
   const el = document.createElement('img');
   el.src = 'shield.png';
   el.style.position = 'absolute';
@@ -145,6 +145,42 @@ function moveEverything() {
   }
 
   bullets = bullets.filter(b => b.y > -20);
+  //===================================================================
+  // === Move bullets toward live target ===
+  for (let bullet of bullets) {
+    if (!bullet.target) continue; // Bullet needs target
+
+    // Get live position of target
+    const targetRect = bullet.target.element.getBoundingClientRect();
+    const targetX = targetRect.left + targetRect.width / 2;
+    const targetY = targetRect.top + targetRect.height / 2;
+
+    // Calculate vector to target
+    const dx = targetX - bullet.x;
+    const dy = targetY - bullet.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    // If bullet close enough, consider it hit
+    if (distance < 20) {
+      bullet.target.hp -= 1;
+      if (bullet.target.hp <= 0) {
+        destroyWord(bullet.target, true);
+      }
+      removeBullet(bullet);
+      continue;
+    }
+
+    // Move bullet toward target
+    bullet.x += (dx / distance) * bullet.speed;
+    bullet.y += (dy / distance) * bullet.speed;
+    bullet.element.style.left = `${bullet.x}px`;
+    bullet.element.style.top = `${bullet.y}px`;
+  }
+
+  // Clean up offscreen bullets
+  bullets = bullets.filter(b => b.y > -20 && b.y < window.innerHeight);
+
+
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -292,8 +328,8 @@ document.addEventListener('keydown', (e) => {
       }
     } else {
       // Wrong letter -> cancel targeting
-      activeTarget = null;
-      activeTargetProgress = 0;
+      /*activeTarget = null;
+      activeTargetProgress = 0;*/
     }
   }
 });
@@ -304,3 +340,49 @@ document.body.addEventListener('keydown', () => {
     startGame();
   }
 });
+
+//==============================================================================================
+// === FIRE BULLET FROM SPACESHIP - Now HOMING ===
+function fireBullet() {
+  const rect = spaceship.getBoundingClientRect();
+
+  if (!activeTarget) return; // Safety: no target, no bullet
+
+  const bullet = document.createElement('div');
+  bullet.className = 'bullet';
+  bullet.style.left = `${rect.left + rect.width / 2}px`;
+  bullet.style.top = `${rect.top}px`;
+  bullet.style.position = 'absolute';
+  gameArea.appendChild(bullet);
+
+  bullets.push({
+    element: bullet,
+    x: rect.left + rect.width / 2,
+    y: rect.top,
+    target: activeTarget, // 🧠 Save live reference to moving word!
+    speed: 5
+  });
+
+  shootSound.play();
+
+  // Rotate ship toward target (optional if you want rotation)
+  const targetRect = activeTarget.element.getBoundingClientRect();
+  rotateSpaceshipToTarget(targetRect);
+}
+
+
+// === ROTATE SPACESHIP TOWARD TARGET ===
+function rotateSpaceshipToTarget(targetRect) {
+  const shipRect = spaceship.getBoundingClientRect();
+
+  const dx = (targetRect.left + targetRect.width/2) - (shipRect.left + shipRect.width/2);
+  const dy = (targetRect.top + targetRect.height/2) - (shipRect.top + shipRect.height/2);
+
+  const angleRad = Math.atan2(dy, dx); // Get angle in radians
+  const angleDeg = angleRad * 180 / Math.PI; // Convert to degrees
+
+  // Rotate the spaceship using CSS transform
+  spaceship.style.transform = `translateX(-50%) rotate(${angleDeg + 90}deg)`;
+}
+
+//=====================================================================================================
