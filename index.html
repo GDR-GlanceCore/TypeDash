@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TypeDash</title>
-  <link rel="stylesheet" href="static/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Shooter - ZType Style</title>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>TypeDash</h1>
-    
-    <!-- Display the word to type -->
-    <div id="word-display"></div>
+  <div id="game-area">
+    <div id="stars"></div>
 
-    <!-- Input where the user types -->
-    <input type="text" id="word-input" placeholder="Start typing..." autofocus />
+    <!-- Spaceship -->
+    <img src="/assets/gratis.png" id="spaceship" alt="Spaceship">
 
-    <!-- Stats section -->
-    <div class="stats">
-      <p>Time Left: <span id="time">60</span>s</p>
-      <p>Score: <span id="score">0</span></p>
-      <p>Accuracy: <span id="accuracy">100</span>%</p>
-      <p>WPM: <span id="wpm">0</span></p>
+    <!-- Shield Visual -->
+    <img src="shield.png" id="shield-visual" alt="Shield" style="display:none;">
+
+    <!-- Health Bar -->
+    <div id="health-bar">
+      <div id="health"></div>
     </div>
 
-    <!-- Restart button -->
-    <button id="restart-btn">Restart</button>
+    <!-- Start Message -->
+    <h1 id="start-message">Press Any Key to Start</h1>
+
+    <!-- Boss Warning -->
+    <h2 id="boss-warning" style="display:none;">⚠️ BOSS INCOMING! ⚠️</h2>
   </div>
 
-  <script src="static/script.js"></script>
+  <!-- Audio -->
+  <audio id="shoot-sound" src="/assets/retro-laser-1-236669.mp3"></audio>
+  <audio id="explosion-sound" src="/assets/explosion-6055.mp3"></audio>
+  <audio id="boss-sound" src="/assets/warning-notification-call-184996.mp3"></audio>
+
+  <script src="/static/script.js"></script>
 </body>
 </html>
