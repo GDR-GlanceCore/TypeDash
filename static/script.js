@@ -33,7 +33,7 @@ const wordList = [
 function startGame() {
   startMessage.style.display = 'none'; // Hide start text
   health = 100;
-  gameSpeed = 0.1;
+  gameSpeed = 0.000005;
   updateHealth();
   words = [];
   bullets = [];
@@ -81,7 +81,7 @@ function spawnWord() {
 function spawnShield() {
   const x = (window.innerWidth / 2) - 20; // Center of screen minus half the width of the shield (40px / 2)
   const el = document.createElement('img');
-  el.src = 'shield.png';
+  el.src = '/assets/Force.gif';
   el.style.position = 'absolute';
   el.style.width = '40px';
   el.style.top = '0px';
@@ -127,24 +127,7 @@ function moveEverything() {
     }
   }
 
-  // Move bullets
-  for (let bullet of bullets) {
-    bullet.y -= 5;
-    bullet.element.style.top = `${bullet.y}px`;
 
-    for (let word of words) {
-      if (Math.abs(bullet.x - word.x) < 50 && Math.abs(bullet.y - word.y) < 30) {
-        word.hp -= 1;
-        if (word.hp <= 0) {
-          destroyWord(word, true);
-        }
-        removeBullet(bullet);
-        break;
-      }
-    }
-  }
-
-  bullets = bullets.filter(b => b.y > -20);
   //===================================================================
   // === Move bullets toward live target ===
   for (let bullet of bullets) {
@@ -162,13 +145,19 @@ function moveEverything() {
 
     // If bullet close enough, consider it hit
     if (distance < 20) {
-      bullet.target.hp -= 1;
-      if (bullet.target.hp <= 0) {
-        destroyWord(bullet.target, true);
+      // === NEW: Remove first character of target word ===
+      let wordObj = bullet.target;
+      wordObj.text = wordObj.text.substring(1); // Cut first letter
+      if (wordObj.text.length === 0) {
+        destroyWord(wordObj, true); // Explode if finished
+      } else {
+        wordObj.element.textContent = wordObj.text; // Update display
       }
-      removeBullet(bullet);
+    
+      removeBullet(bullet); // Remove the bullet after hitting
       continue;
     }
+    
 
     // Move bullet toward target
     bullet.x += (dx / distance) * bullet.speed;
