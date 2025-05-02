@@ -308,6 +308,7 @@ document.addEventListener('keydown', (e) => {
         activeTarget.text.substring(0, activeTargetProgress) +
         "</span>" +
         activeTarget.text.substring(activeTargetProgress);
+        shootSound.play();
 
       // Fully completed word
       if (activeTargetProgress >= activeTarget.text.length) {
