@@ -167,7 +167,7 @@ function moveEverything() {
   }
 
   // Clean up offscreen bullets
-  bullets = bullets.filter(b => b.y > -20 && b.y < window.innerHeight);
+  //bullets = bullets.filter(b => b.y > -20 && b.y < window.innerHeight);
 
 
 }
@@ -316,11 +316,11 @@ document.addEventListener('keydown', (e) => {
         activeTarget = null;
         activeTargetProgress = 0;
       }
-    } else {
+    }/* else {
       // Wrong letter -> cancel targeting
-      /*activeTarget = null;
-      activeTargetProgress = 0;*/
-    }
+      activeTarget = null;
+      activeTargetProgress = 0;
+    }*/
   }
 });
 
