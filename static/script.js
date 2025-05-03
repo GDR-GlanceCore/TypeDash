@@ -142,7 +142,7 @@ function moveEverything() {
     const dx = targetX - bullet.x;
     const dy = targetY - bullet.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
-
+/*
     // If bullet close enough, consider it hit
     if (distance < 20) {
       // === NEW: Remove first character of target word ===
@@ -157,7 +157,7 @@ function moveEverything() {
       removeBullet(bullet); // Remove the bullet after hitting
       continue;
     }
-    
+    */
 
     // Move bullet toward target
     bullet.x += (dx / distance) * bullet.speed;
