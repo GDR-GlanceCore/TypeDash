@@ -19,7 +19,7 @@ let bossInterval;
 let health = 100;
 let shieldActive = false;
 let shieldTimeout = null;
-let gameSpeed = 1;
+let gameSpeed = 0.0001;
 let activeTarget = null;     // Which word player is typing
 let activeTargetProgress = 0; // How many letters typed correctly
 
@@ -239,12 +239,12 @@ function createExplosion(x, y) {
     gameArea.removeChild(boom);
   }, 500);
 }
-
+/*
 // === REMOVE BULLET ===
 function removeBullet(bullet) {
   gameArea.removeChild(bullet.element);
   bullets = bullets.filter(b => b !== bullet);
-}
+}*/
 
 // === DAMAGE PLAYER ===
 function damagePlayer(amount) {
@@ -266,7 +266,7 @@ function endGame() {
   clearIntervals();
   alert("Game Over! Refresh to play again!");
 }
-
+/*
 // === FIRE BULLET FROM SPACESHIP ===
 function fireBullet() {
   const rect = spaceship.getBoundingClientRect();
@@ -283,7 +283,7 @@ function fireBullet() {
   });
 
   shootSound.play();
-}
+}*/
 
 // === GLOBAL KEYDOWN HANDLER ===
 document.addEventListener('keydown', (e) => {
@@ -350,7 +350,8 @@ function fireBullet() {
     x: rect.left + rect.width / 2,
     y: rect.top,
     target: activeTarget, // 🧠 Save live reference to moving word!
-    speed: 5
+    speed: 20
+    
   });
 
   shootSound.play();
