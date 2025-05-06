@@ -308,7 +308,10 @@ document.addEventListener('keydown', (e) => {
         activeTarget.text.substring(0, activeTargetProgress) +
         "</span>" +
         activeTarget.text.substring(activeTargetProgress);
-        shootSound.play();
+
+        // Reset the sound to the beginning and play it again on each key press
+        shootSound.currentTime = 0; // Reset to the beginning of the sound
+        shootSound.play(); // Play the sound
 
       // Fully completed word
       if (activeTargetProgress >= activeTarget.text.length) {
@@ -354,6 +357,7 @@ function fireBullet() {
     
   });
 
+  shootSound.currentTime = 0;
   shootSound.play();
 
   // Rotate ship toward target (optional if you want rotation)
