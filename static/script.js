@@ -142,9 +142,10 @@ function moveEverything() {
     const dx = targetX - bullet.x;
     const dy = targetY - bullet.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
-/*
+
     // If bullet close enough, consider it hit
     if (distance < 20) {
+      /*
       // === NEW: Remove first character of target word ===
       let wordObj = bullet.target;
       wordObj.text = wordObj.text.substring(1); // Cut first letter
@@ -152,12 +153,15 @@ function moveEverything() {
         destroyWord(wordObj, true); // Explode if finished
       } else {
         wordObj.element.textContent = wordObj.text; // Update display
-      }
+      }*/
     
-      removeBullet(bullet); // Remove the bullet after hitting
+      setTimeout(() => {
+        removeBullet(bullet); // Remove the bullet after hitting
+      }, 50);
       continue;
+
     }
-    */
+    
 
     // Move bullet toward target
     bullet.x += (dx / distance) * bullet.speed;
@@ -167,9 +171,16 @@ function moveEverything() {
   }
 
   // Clean up offscreen bullets
-  //bullets = bullets.filter(b => b.y > -20 && b.y < window.innerHeight);
+  bullets = bullets.filter(b => b.y > -20 && b.y < window.innerHeight);
 
 
+}
+
+/**/
+// === REMOVE BULLET ===
+function removeBullet(bullet) {
+  gameArea.removeChild(bullet.element);
+  bullets = bullets.filter(b => b !== bullet);
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -239,12 +250,7 @@ function createExplosion(x, y) {
     gameArea.removeChild(boom);
   }, 500);
 }
-/*
-// === REMOVE BULLET ===
-function removeBullet(bullet) {
-  gameArea.removeChild(bullet.element);
-  bullets = bullets.filter(b => b !== bullet);
-}*/
+
 
 // === DAMAGE PLAYER ===
 function damagePlayer(amount) {
