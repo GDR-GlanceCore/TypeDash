@@ -39,9 +39,9 @@ function startGame() {
   bullets = [];
   shields = [];
   clearIntervals();
-  spawnInterval = setInterval(spawnWord, 2000);
-  moveInterval = setInterval(moveEverything, 30);
-  bossInterval = setInterval(spawnBoss, 30000); // Boss every 30s
+  spawnInterval = setInterval(spawnWord, 3000);     // Increase to 3000ms (3 seconds)
+  moveInterval = setInterval(moveEverything, 50);   // Increase to 50ms for slower movement
+  bossInterval = setInterval(spawnBoss, 30000);     // Boss every 30s
 }
 
 // === CLEAR OLD INTERVALS ===
@@ -71,7 +71,7 @@ function spawnWord() {
     element: el,
     x: x,
     y: 0,
-    speed: 1 + Math.random() * 2 * gameSpeed,
+    speed: 0.5 + Math.random() * 2 * gameSpeed,
     hp: 1,
     isBoss: false
   });
@@ -99,7 +99,7 @@ function spawnShield() {
 
 // === MOVE EVERYTHING: Words, Shields, Bullets ===
 function moveEverything() {
-  gameSpeed += 0.0005; // Gradually increase difficulty
+  gameSpeed += 0.00005; // Gradually increase difficulty
 
   // Move words
   for (let word of words) {
@@ -370,7 +370,7 @@ function fireBullet() {
     x: rect.left + rect.width / 2,
     y: rect.top,
     target: activeTarget, // 🧠 Save live reference to moving word!
-    speed: 20
+    speed: 50 // Speed of bullet
     
   });
 
