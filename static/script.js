@@ -16,7 +16,7 @@ let shields = [];       // Falling shield pickups
 let spawnInterval;      
 let moveInterval;       
 let bossInterval;
-let health = 100;
+let health = 1000;
 let shieldActive = false;
 let shieldTimeout = null;
 let gameSpeed = 0.0001;
@@ -32,7 +32,7 @@ const wordList = [
 // === START GAME ===
 function startGame() {
   startMessage.style.display = 'none'; // Hide start text
-  health = 100;
+  health = 1000;
   gameSpeed = 0.000005;
   updateHealth();
   words = [];
@@ -196,7 +196,7 @@ function spawnBoss() {
   bossSound.play();
   setTimeout(() => bossWarning.style.display = 'none', 2000);
 
-  const word = wordList[Math.floor(Math.random() * wordList.length)] + "!";
+  const word = wordList[Math.floor(Math.random() * wordList.length)] + ".";
   const x = Math.random() * (window.innerWidth - 150);
   const el = document.createElement('div');
   el.className = 'word boss';
@@ -291,15 +291,18 @@ document.addEventListener('keydown', (e) => {
 
   // If no active target word, find one
   if (!activeTarget) {
-    activeTarget = words.find(w => w.text.startsWith(key));
+    //activeTarget = words.find(w => w.text.startsWith(key));
+    activeTarget = words.find(w => w.text.toLowerCase().startsWith(key));
     activeTargetProgress = 0;
   }
 
   // If there is a target
   if (activeTarget) {
-    const expectedChar = activeTarget.text[activeTargetProgress].toLowerCase();
+    //const expectedChar = activeTarget.text[activeTargetProgress].toLowerCase();
+    const attemptedText = (activeTarget.text.substring(0, activeTargetProgress) + key).toLowerCase();
 
-    if (key === expectedChar) {
+    //if (key === expectedChar) {
+    if (activeTarget.text.toLowerCase().startsWith(attemptedText)) {
       fireBullet(); // Fire bullet on correct letter
       activeTargetProgress++;
 
@@ -319,11 +322,19 @@ document.addEventListener('keydown', (e) => {
         activeTarget = null;
         activeTargetProgress = 0;
       }
-    }/* else {
+      else {
+
+      }
+    }
+    else {
+      // Mismatch: reset target and progress
       // Wrong letter -> cancel targeting
+      activeTarget.element.innerHTML = activeTarget.text; // reset highlight
+      /**/
       activeTarget = null;
       activeTargetProgress = 0;
-    }*/
+      
+    }
   }
 });
 
