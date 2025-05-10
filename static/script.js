@@ -328,8 +328,15 @@ document.addEventListener('keydown', (e) => {
         activeTarget = null;
         activeTargetProgress = 0;
       }
-      else {
-
+    } else if (key === 'backspace') {
+      // Backspace: remove last letter
+      if (activeTargetProgress > 0) {
+        activeTargetProgress--;
+        activeTarget.element.innerHTML =
+          "<span style='color:cyan;'>" +
+          activeTarget.text.substring(0, activeTargetProgress) +
+          "</span>" +
+          activeTarget.text.substring(activeTargetProgress);
       }
     }
     else {
