@@ -1,37 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Typing Shooter</title>
-  <link rel="stylesheet" href="/static/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Speed Game</title>
+  <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-  <div id="game-area">
-    <div id="stars"></div>
-
+  <div class="container">
+    <h1>Typing Speed Game</h1>
     
-    <img src="/assets/gratis.png" id="spaceship" alt="Spaceship"><!-- Spaceship -->
+    <!-- Display the word to type -->
+    <div id="word-display"></div>
 
-    
-    <img src="/assets/force-shield.gif" id="shield-visual" alt="Shield" style="display:none;"><!-- Shield Visual -->
+    <!-- Input where the user types -->
+    <input type="text" id="word-input" placeholder="Start typing..." autofocus />
 
-    <!-- Health Bar -->
-    <div id="health-bar">
-      <div id="health"></div>
+    <!-- Stats section -->
+    <div class="stats">
+      <p>Time Left: <span id="time">60</span>s</p>
+      <p>Score: <span id="score">0</span></p>
+      <p>Accuracy: <span id="accuracy">100</span>%</p>
+      <p>WPM: <span id="wpm">0</span></p>
     </div>
 
-    
-    <h1 id="start-message">Press Any Key to Start</h1><!-- Start Message -->
-
-    
-    <h2 id="boss-warning" style="display:none;">⚠️ BOSS INCOMING! ⚠️</h2><!-- Boss Warning -->
+    <!-- Restart button -->
+    <button id="restart-btn">Restart</button>
   </div>
-
-  <!-- Audio -->
-  <audio id="shoot-sound" src="/assets/retro-laser-1-236669.mp3"></audio>
-  <audio id="explosion-sound" src="/assets/explosion-6055.mp3"></audio>
-  <audio id="boss-sound" src="/assets/warning-notification-call-184996.mp3"></audio>
 
   <script src="/static/script.js"></script>
 </body>
