@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container" onclick="playMusic()">
-    <h1>Typing Speed Game</h1>
+    <h1>TypeDash</h1>
     
     <!-- Display the word to type -->
     <div id="word-display"></div>
@@ -18,17 +18,18 @@
 
     <!-- Stats section -->
     <div class="stats">
-      <p>Time Left: <span id="time">60</span>s</p>
-      <p>Score: <span id="score">0</span></p>
-      <p>Accuracy: <span id="accuracy">100</span>%</p>
-      <p>WPM: <span id="wpm">0</span></p>
+      <p>Time Left:   <span id="time">60</span>s</p>
+      <p>Score:       <span id="score">0</span></p>
+      <p>Accuracy:    <span id="accuracy">100</span>%</p>
+      <p>WPM:         <span id="wpm">0</span></p>
     </div>
 
     <!-- Restart button -->
     <button id="restart-btn">Restart</button>
   </div>
 
+  <audio id="bg-music" src="/assets/typical-trap-loop-140bpm-129880.mp3" loop></audio>
   <script src="/static/script.js"></script>
-  <audio id="bg-music" src="/assets/Asian-Graveyard-Remastered(chosic.com).mp3" loop></audio>
+  
 </body>
 </html>

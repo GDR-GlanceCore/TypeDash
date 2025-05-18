@@ -6,8 +6,8 @@ const scoreEl = document.getElementById("score"); // Score tracker
 const accuracyEl = document.getElementById("accuracy"); // Accuracy %
 const wpmEl = document.getElementById("wpm"); // Words per minute
 const restartBtn = document.getElementById("restart-btn"); // Restart button
+const music = document.getElementById("bg-music");
 
-const music = document.getElementById('bg-music');
 
 // Word list for the game
 const words = [
@@ -80,6 +80,7 @@ function updateStats() {
 wordInput.addEventListener("input", () => {
   if (!gameStarted) {
     gameStarted = true;
+    music.play();
     startTimer(); // Start timer on first input
   }
 
@@ -108,6 +109,3 @@ restartBtn.addEventListener("click", restartGame);
 // Initialize the game
 showNewWord(); // First word when page loads
 
-function playMusic() {
-  music.play();
-}
