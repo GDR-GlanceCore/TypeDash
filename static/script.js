@@ -7,6 +7,8 @@ const accuracyEl = document.getElementById("accuracy"); // Accuracy %
 const wpmEl = document.getElementById("wpm"); // Words per minute
 const restartBtn = document.getElementById("restart-btn"); // Restart button
 
+const music = document.getElementById('bg-music');
+
 // Word list for the game
 const words = [
   "banana", "computer", "sky", "javascript", "keyboard",
@@ -105,3 +107,7 @@ restartBtn.addEventListener("click", restartGame);
 
 // Initialize the game
 showNewWord(); // First word when page loads
+
+function playMusic() {
+  music.play();
+}

@@ -4,6 +4,9 @@ body {
   background: #f7f9fc;
   margin: 0;
   padding: 0;
+  background: url('/assets/space-wallpaper-stars-background.gif') no-repeat center center fixed;
+  background-size: cover;
+  animation: moveBackground 60s linear infinite;
 }
 
 /* Center the game container */
@@ -15,13 +18,23 @@ body {
   background: white;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: white;
+  width: 400px;
 }
 
 /* Word display styling */
 #word-display {
   font-size: 2rem;
   margin: 20px 0;
-  color: #333;
+  /*color: #333;*/
+  color: wheat;
 }
 
 /* Input styling */
