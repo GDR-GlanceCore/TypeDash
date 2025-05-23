@@ -3,14 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Typing Speed Game</title>
+  <link rel="icon" href="/assets/GDRLogo.jpg" sizes="32x32" type="image/jpg">
+  <link rel="icon" href="/assets/GDRLogo.jpg" sizes="64x64" type="image/jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="static/media-btn-style.css">
+
+
+
+
+  <title>TypeDash</title>
   <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
+  <canvas id="gameCanvas"></canvas>
+
+
+
   <div class="container" onclick="playMusic()">
-    <h1>TypeDash</h1>
+
+
+
+    <a target="_blank" class="fancy-btn github" href="https://github.com/GDR-GlanceCore/TypeDash">
+        <i class="fab fa-github"></i><span>Developer</span>
+    </a>
+    <a target="_blank" class="fancy-btn linkedin" href="https://www.linkedin.com/in/gregorio-rasonabe-66ab75235/">
+        <i class="fab fa-linkedin-in"></i><span>Connect</span>
+    </a>
+    <a target="_blank" class="fancy-btn facebook" href="https://www.facebook.com/Gregiefel">
+        <i class="fab fa-facebook-f"></i><span>Facebook</span>
+    </a>
+    <br/>
+
+
+    
+
+    <h1>TypeDash</h1><br/><br/>
     
     <!-- Display the word to type -->
+    <p>Type the word below as fast as you can:</p>
     <div id="word-display"></div>
 
     <!-- Input where the user types -->
@@ -28,8 +58,11 @@
     <button id="restart-btn">Restart</button>
   </div>
 
-  <audio id="bg-music" src="/assets/typical-trap-loop-140bpm-129880.mp3" loop></audio>
+  <audio id="bg-music" src="/assets/cyberpunk-beat-64649.mp3" loop></audio>
+  <audio id="correct-sound" src="/assets/successed-295058.mp3"></audio>
+  <audio id="wrong-sound" src="/assets/error-10-206498.mp3"></audio>
   <script src="/static/script.js"></script>
+  <script src="/static/starfield.js"></script>
   
 </body>
 </html>

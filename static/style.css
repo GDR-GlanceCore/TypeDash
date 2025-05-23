@@ -1,32 +1,44 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: black;
+}
+canvas {
+  display: block;
+}
 /* Basic reset and font */
 body {
   font-family: Arial, sans-serif;
-  background: #f7f9fc;
+  /* background: #f7f9fc;
   margin: 0;
   padding: 0;
   background: url('/assets/space-wallpaper-stars-background.gif') no-repeat center center fixed;
-  background-size: cover;
-  animation: moveBackground 60s linear infinite;
+  background-size: cover; */
 }
 
 /* Center the game container */
 .container {
-  max-width: 600px;
-  margin: 60px auto;
+  top: -700px;
+  max-width: 500px;
+  margin: 20px auto;
+  position: relative;
+  /*
   text-align: center;
   padding: 20px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  width: 400px;*/
 
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  text-align: center;
+  padding: 20px;
   color: white;
-  width: 400px;
+  text-align: center;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Word display styling */
@@ -43,6 +55,7 @@ body {
   font-size: 1.2rem;
   width: 80%;
   margin-bottom: 20px;
+  background-color: rgba(255,255,255,0.2);
 }
 
 /* Stats styling */

@@ -1,0 +1,88 @@
+.fancy-btn {
+  float: right;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #333;
+  color: white;
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  padding: 0;
+  gap: 0;
+  white-space: nowrap;
+  position: relative;
+  top: -33px;
+  right: -10px;
+}
+
+/* Icon */
+.fancy-btn i {
+  font-size: 14px;
+  transition: transform 0.4s ease;
+}
+
+/* Text */
+.fancy-btn span {
+  opacity: 0;
+  margin-left: 0;
+  transition: all 0.4s ease;
+  width: 0;
+  overflow: hidden;
+}
+
+/* Hover pop-out effect */
+.fancy-btn:hover {
+  padding: 0 16px;
+  gap: 8px;
+  width: auto;
+}
+
+/* Show text on hover */
+.fancy-btn:hover span {
+  opacity: 1;
+  width: auto;
+  margin-left: 6px;
+}
+
+/* Pop (lift) effect */
+.fancy-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Facebook Style */
+.fancy-btn.facebook {
+  background: linear-gradient(135deg, #3b5998, #4c70ba);
+}
+.fancy-btn.facebook:hover {
+  z-index: 1;
+  background: linear-gradient(135deg, #4c70ba, #3b5998);
+}
+
+/* LinkedIn Style */
+.fancy-btn.linkedin {
+  background: linear-gradient(135deg, #0077b5, #0093d3);
+}
+.fancy-btn.linkedin:hover {
+  z-index: 1;
+  background: linear-gradient(135deg, #0093d3, #0077b5);
+}
+
+/* GitHub Style */
+.fancy-btn.github {
+  background: linear-gradient(135deg, #24292e, #2f363d);
+}
+.fancy-btn.github:hover {
+  z-index: 1;
+  background: linear-gradient(135deg, #2f363d, #24292e);
+}
