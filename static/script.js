@@ -116,7 +116,7 @@ wordInput.addEventListener("input", () => {
 
   if (currentWord.startsWith(typedText)) {
     correctTyped += 1; // If correct so far, increment correct chars
-    wordInput.style.color = "limegreen"; // Green for correct
+    wordInput.style.color = "green"; // Green for correct
     correctSound.currentTime = 0; // Reset sound
     correctSound.play(); // Play correct sound
   } else {

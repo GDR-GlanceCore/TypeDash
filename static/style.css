@@ -3,6 +3,7 @@ html, body {
   padding: 0;
   overflow: hidden;
   background: black;
+  
 }
 canvas {
   display: block;
@@ -55,7 +56,11 @@ body {
   font-size: 1.2rem;
   width: 80%;
   margin-bottom: 20px;
-  background-color: rgba(255,255,255,0.2);
+  box-shadow: none;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.3);
 }
 
 /* Stats styling */
@@ -67,6 +72,7 @@ body {
 /* Restart button */
 #restart-btn {
   background: #007bff;
+  background: rgba(0, 122, 253, 0.2);
   color: white;
   padding: 10px 25px;
   border: none;

@@ -2,9 +2,9 @@ const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
     let stars = [], planets = [], nebula = [];
-    const starCount = 1200;
+    const starCount = 1500;
     let width, height, centerX, centerY;
-    const focalLength = 300;
+    const focalLength = 700;
 
     let inputX = 0, inputY = 0;
     let targetX = 0, targetY = 0;
@@ -56,7 +56,7 @@ const canvas = document.getElementById('gameCanvas');
           y: height * 0.6,
           r: 100,
           parallax: 0.08,
-          color: '#33ffff'
+          color: 'BlueViolet'
         }
       ];
     }
@@ -67,7 +67,7 @@ const canvas = document.getElementById('gameCanvas');
         nebula.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          r: 100 + Math.random() * 200,
+          r: 50 + Math.random() * 100,
           color: `hsla(${Math.random() * 360}, 100%, 70%, 0.05)`,
           parallax: 0.02 + Math.random() * 0.02
         });
