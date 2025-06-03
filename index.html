@@ -32,12 +32,13 @@
     <a target="_blank" class="fancy-btn facebook" href="https://www.facebook.com/Gregiefel">
         <i class="fab fa-facebook-f"></i><span>Facebook</span>
     </a>
-    <br/>
+    <p align="left"> <img src="https://komarev.com/ghpvc/?username=g-glancecore&label=Profile%20views&color=0e75b6&style=flat" alt="g-glancecore" /> </p>
+    
 
 
     
 
-    <h1>TypeDash</h1><br/><br/>
+    <h1>TypeDash</h1><br/>
     
     <!-- Display the word to type -->
     <p>Type the word below as fast as you can:</p>
@@ -64,5 +65,20 @@
   <script src="static/script.js"></script>
   <script src="static/starfield.js"></script>
   
+
+  <!-- Leaderboard Modal -->
+  <div id="leaderboard-modal" class="modal">
+    <div class="modal-content">
+      <h2>🏆 Leaderboard</h2>
+      <table id="leaderboard-table">
+        <thead>
+          <tr><th>Name</th><th>Score</th><th>WPM</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button onclick="closeLeaderboard()">Close</button>
+    </div>
+  </div>
+
 </body>
 </html>

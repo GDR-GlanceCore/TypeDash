@@ -71,10 +71,24 @@ function startTimer() {
 }
 
 // Function to end the game
+// function endGame() {
+//   wordInput.disabled = true; // Disable typing
+//   wordDisplay.textContent = "Time's up!"; // Game over message
+// }
 function endGame() {
-  wordInput.disabled = true; // Disable typing
-  wordDisplay.textContent = "Time's up!"; // Game over message
+  wordInput.disabled = true;
+  wordDisplay.textContent = "Time's up!";
+  
+  // Prompt for player name
+  const name = prompt("Your time is up!\nEnter your name for the leaderboard:");
+  const wpm = parseInt(wpmEl.textContent, 10);
+  
+  if (name) {
+    updateLeaderboard(name, score, wpm);
+  }
+  showLeaderboard();
 }
+
 
 // Function to reset and restart the game
 function restartGame() {
@@ -140,3 +154,37 @@ restartBtn.addEventListener("click", restartGame);
 // Initialize the game
 showNewWord(); // First word when page loads
 
+
+
+
+// Leaderboard logic
+function getLeaderboard() {
+  return JSON.parse(localStorage.getItem("leaderboard") || "[]");
+}
+
+function saveLeaderboard(data) {
+  localStorage.setItem("leaderboard", JSON.stringify(data));
+}
+
+function updateLeaderboard(name, score, wpm) {
+  const leaderboard = getLeaderboard();
+  leaderboard.push({ name, score, wpm });
+  leaderboard.sort((a, b) => b.score - a.score);
+  saveLeaderboard(leaderboard.slice(0, 10)); // Keep top 10
+}
+
+function showLeaderboard() {
+  const leaderboard = getLeaderboard();
+  const tbody = document.querySelector("#leaderboard-table tbody");
+  tbody.innerHTML = "";
+  leaderboard.forEach(entry => {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${entry.name}</td><td>${entry.score}</td><td>${entry.wpm}</td>`;
+    tbody.appendChild(row);
+  });
+  document.getElementById("leaderboard-modal").style.display = "flex";
+}
+
+function closeLeaderboard() {
+  document.getElementById("leaderboard-modal").style.display = "none";
+}

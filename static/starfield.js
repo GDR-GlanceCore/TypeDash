@@ -4,7 +4,7 @@ const canvas = document.getElementById('gameCanvas');
     let stars = [], planets = [], nebula = [];
     const starCount = 1500;
     let width, height, centerX, centerY;
-    const focalLength = 700;
+    const focalLength = 750;
 
     let inputX = 0, inputY = 0;
     let targetX = 0, targetY = 0;
@@ -20,8 +20,8 @@ const canvas = document.getElementById('gameCanvas');
     resizeCanvas();
 
     window.addEventListener('mousemove', e => {
-      targetX = (e.clientX - centerX) * 0.002;
-      targetY = (e.clientY - centerY) * 0.002;
+      targetX = (e.clientX - centerX) * 0.0003;
+      targetY = (e.clientY - centerY) * 0.0003;
     });
 
     window.addEventListener('touchmove', e => {
