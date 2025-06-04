@@ -173,6 +173,11 @@ function updateLeaderboard(name, score, wpm) {
   saveLeaderboard(leaderboard.slice(0, 10)); // Keep top 10
 }
 
+document.getElementById("leaderboard-link").addEventListener("click", function(e) {
+  e.preventDefault();
+  showLeaderboard();
+});
+
 function showLeaderboard() {
   const leaderboard = getLeaderboard();
   const tbody = document.querySelector("#leaderboard-table tbody");
