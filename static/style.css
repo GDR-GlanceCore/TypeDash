@@ -27,7 +27,7 @@ body {
 
 /* Center the game container */
 .container {
-  top: -650px;
+  top: -700px;
   max-width: 500px;
   margin: 20px auto;
   position: relative;
