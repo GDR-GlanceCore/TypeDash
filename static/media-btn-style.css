@@ -60,6 +60,15 @@
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
 
+/* leaderboard Style */
+.fancy-btn.leaderboard {
+  background: radial-gradient(circle, #5a4000, #3e2c00, #1f1500);
+}
+.fancy-btn.leaderboard:hover {
+  z-index: 1;
+  background: radial-gradient(circle, #5a4000, #3e2c00, #1f1500);
+}
+
 /* Facebook Style */
 .fancy-btn.facebook {
   background: linear-gradient(135deg, #3b5998, #4c70ba);
